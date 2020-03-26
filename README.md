@@ -12,5 +12,5 @@ npm install
 
 ## Usage
 
-Open the terminal or your command line in Backend folder and start the server running the command npm start. After the server started let running and open another  terminal. Repeat the same process again in the FrontEnd folder.
+Open the terminal or your command line in the  Backend folder and start the server using the command npm start. After the server started let it running and open another terminal in the FrontEnd folder and repeat the same command to start the frontEnd side.
 ```
