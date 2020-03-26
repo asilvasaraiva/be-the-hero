@@ -4,7 +4,7 @@ module.exports={
     async listAll(request,response){
         const {page =1} = request.query;
         const [count] = await connection('incidents').count();
-        console.log(count);
+       // console.log(count);
 
         const incidents = await connection('incidents')
         .join('ongs','ongs.id','=','incidents.ong_id')
@@ -39,6 +39,7 @@ module.exports={
     async delete(request,response){
         const {id} = request.params;
         const ong_id = request.headers.authorization;
+        //console.log(`ID vindo do frontEnd: ${id}`);
         const incident = await connection('incidents')
             .where('id',id)
             .select('ong_id')
@@ -47,7 +48,7 @@ module.exports={
         if(incident.ong_id != ong_id){
             return response.status(401).json({error:'Operation forbbiden.'});
         }
-        await connection('incidents').select('id',id).delete();
+        await connection('incidents').where('id',id).delete();
         return response.status(201).send();
     }
 };
